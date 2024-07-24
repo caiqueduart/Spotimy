@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f9a61f-63da-419a-be46-5241ac20e102" name="Changes" comment="criado main">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Teste.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+    <list default="true" id="34f9a61f-63da-419a-be46-5241ac20e102" name="Changes" comment="construção...">
+      <change beforePath="$PROJECT_DIR$/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.form" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +46,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Debug",
+    "Application.App.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.Teste.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -86,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1721777734781</updated>
       <workItem from="1721777735811" duration="6609000" />
-      <workItem from="1721787296434" duration="879000" />
+      <workItem from="1721787296434" duration="1344000" />
     </task>
     <task id="LOCAL-00001" summary="creado main">
       <option name="closed" value="true" />
@@ -104,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721778273823</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="construção...">
+      <option name="closed" value="true" />
+      <created>1721788522320</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721788522320</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creado main" />
-    <option name="LAST_COMMIT_MESSAGE" value="creado main" />
+    <MESSAGE value="construção..." />
+    <option name="LAST_COMMIT_MESSAGE" value="construção..." />
   </component>
 </project>

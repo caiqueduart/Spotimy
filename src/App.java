@@ -3,11 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class App extends JFrame {
-    private JButton teste4Button;
-    private JButton teste1Button;
-    private JButton teste3Button;
-    private JButton test2Button;
     private JPanel panel1;
+    private JButton testButton;
 
     public App() {
         setContentPane(panel1);
@@ -17,7 +14,7 @@ public class App extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         
-        teste1Button.addActionListener(new ActionListener() {
+        testButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(App.this, "Clicou");
