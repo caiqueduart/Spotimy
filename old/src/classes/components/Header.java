@@ -7,11 +7,14 @@ import javax.swing.JPanel;
 
 public class Header extends JPanel{
     JPanel header = new JPanel();
+    
     String[] playlists = {
         "play 1", 
         "play 2", 
-        "play 3"
+        "play 3",
+        "play 4"
     };
+
     JLabel playingNow = new JLabel("Reproduzindo Agora ...");
     JComboBox selection = new JComboBox(playlists);
 

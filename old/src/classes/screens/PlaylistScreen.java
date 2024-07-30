@@ -6,11 +6,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import classes.components.AudioList;
 import classes.components.Header;
 import classes.components.Music;
 
 public class PlaylistScreen extends JFrame {
 
+    AudioList musicas = new AudioList(new String[] {"Musica 1", "Musica 2"});
     Header header = new Header();
     JPanel playlistInfo = new JPanel();
     JPanel musicInfo = new JPanel();
@@ -40,9 +42,9 @@ public class PlaylistScreen extends JFrame {
         
         music.setBounds(410, 120, 570, 60);
 
+        add(musicas);
         add(header);
         add(playlistInfo);
         add(musicInfo);
-        add(music);
     }
 }
