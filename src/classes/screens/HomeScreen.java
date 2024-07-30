@@ -1,4 +1,4 @@
-package classes;
+package classes.screens;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.ImageIcon;
