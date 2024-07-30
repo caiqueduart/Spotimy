@@ -3,6 +3,6 @@ import classes.*;
 
 public class App extends JFrame{
     public static void main(String[] args) {
-        HomeScreen homeScreen = new HomeScreen();
+        PlaylistScreen playlistScreen = new PlaylistScreen();
     }
 }
