@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class PlaylistSelector {
-    public ArrayList<String> values = new ArrayList<>();
     Object value;
-    String path = "Spotimy/src/files/playlists/playlists.txt";
     FileReader fr;
     BufferedReader bf;
+    public ArrayList<String> values = new ArrayList<>();
+    String path = "Spotimy/src/files/playlists/playlists.txt";
 
     public PlaylistSelector() {
         try {
@@ -27,14 +27,16 @@ public class PlaylistSelector {
         }
     }
 
-    public void showPlaylists() {
+    public String showPlaylists() {
+
         if (values.isEmpty()) {
             JOptionPane.showMessageDialog(
                 null, 
                 "Nenhuma playlist disponível", 
                 "Erro", 
                 JOptionPane.ERROR_MESSAGE);
-            return;
+
+            return null;
         }
 
         value = JOptionPane.showInputDialog(
@@ -46,6 +48,8 @@ public class PlaylistSelector {
             values.toArray(),
             values.get(0)
         );
+
+        return (String)value;
     }
 
     public String getValue() {
