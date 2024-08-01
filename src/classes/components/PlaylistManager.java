@@ -9,7 +9,7 @@ import src.classes.objects.Musica;
 
 public class PlaylistManager {
     private String playlistName;
-    public PlayList playlist = new PlayList(playlistName);
+    private PlayList playlist = new PlayList(playlistName);
     private String pathColaboradores;
     private String pathMusicas;
     private FileReader fr;
