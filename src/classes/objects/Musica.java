@@ -10,6 +10,10 @@ public class Musica extends Audio {
         this.genero = genero;
     }
 
+    public Musica(String nome, double duracaoSegundos) {
+        super(nome, duracaoSegundos);
+    }
+
     public String getArtista() {
         return artista;
     }

@@ -8,24 +8,18 @@ import src.classes.objects.PlayList;
 import src.classes.objects.Musica;
 
 public class PlaylistManager {
-    private String playlistName;
-    private PlayList playlist = new PlayList(playlistName);
-    private String pathColaboradores;
-    private String pathMusicas;
-    private FileReader fr;
-    private BufferedReader br;
+    private PlayList playlist;
     
     public PlaylistManager(String playlistName) {
         
-        this.playlistName = playlistName;
-
-        pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
-        pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
+        this.playlist = new PlayList(playlistName);
+        String pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
+        String pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
 
         try {
 
-            fr = new FileReader(pathColaboradores);
-            br = new BufferedReader(fr);
+            FileReader fr = new FileReader(pathColaboradores);
+            BufferedReader br = new BufferedReader(fr);
 
             String line;
 
@@ -48,22 +42,25 @@ public class PlaylistManager {
                 ));
             }
 
+            fr.close();
+            br.close();
+
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
         }
     }
 
-    public void showMusics() {
+    public Musica showAndSelectMusic() {
 
-        StringBuilder colaboradoresList = new StringBuilder("COLABORADORES\n");
+        StringBuilder colabList = new StringBuilder("PLAYLIST POR:\n");
         ArrayList<String> valuesList = new ArrayList<>();
 
         for (int i = 0; i < playlist.getNomeColaboradores().size(); i++) {
 
-            colaboradoresList.append(playlist.getNomeColaboradores().get(i));
+            colabList.append(playlist.getNomeColaboradores().get(i));
 
             if (i < (playlist.getNomeColaboradores().size() - 1)) {
-                colaboradoresList.append(" | ");
+                colabList.append(", ");
             }
         }
 
@@ -77,12 +74,23 @@ public class PlaylistManager {
 
         String selectedValue = (String) JOptionPane.showInputDialog(
             null,
-            "Qual música você gostaria de ouvir?", 
-            "Spotimy",
+            colabList + "\n\nQUAL MÚSICA GOSTARIA DE OUVIR?", 
+            "Spotimy > " + playlist.getNome(),
             JOptionPane.INFORMATION_MESSAGE, 
             null,
             values,
             values[0]
         );
+
+        String[] selectedValues = selectedValue.split(" - ");
+        
+        for(int i = 0; i<playlist.getMusicas().size(); i++) {
+            Musica musica = playlist.getMusicas().get(i);
+            if(musica.getNome().equals(selectedValues[0]) && musica.getArtista().equals(selectedValues[1])) {
+                return musica;
+            } 
+        }
+
+        return null;
     }
 }

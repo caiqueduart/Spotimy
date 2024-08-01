@@ -1,6 +1,7 @@
 package src;
 import javax.swing.JOptionPane;
 import src.classes.components.PlaylistManager;
+import src.classes.objects.Musica;
 import src.classes.components.Home;
 import src.classes.components.PlaylistSelector;
 
@@ -15,7 +16,9 @@ public class App {
         if(home.getValue().equals("Playlists")) {
             selectedPlaylist = playlists.showPlaylists();
             PlaylistManager playlist = new PlaylistManager(selectedPlaylist);
-            playlist.showMusics();
+            Musica musica = new Musica("", 0);
+            musica = playlist.showAndSelectMusic();
+            System.out.println(musica.getNome() + " > " + musica.getArtista());
 
         } else if(home.getValue().equals("Podcasts")) {
 
