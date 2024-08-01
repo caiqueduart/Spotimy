@@ -1,8 +1,38 @@
 package src.classes.components;
+import javax.swing.JOptionPane;
+import src.classes.objects.Musica;
 
 public class MusicPlayer {
 
-    MusicPlayer(Object music) {
-        
+    MusicPlayer() {}
+
+    public static void play(Musica music) {
+
+        String info = (
+            music.getNome() + " está tocando agora. . ."
+            + "\n◊ Artista: " + music.getArtista()
+            + "\n◊ Duracao: " + music.getDuracaoSegundos() + " segundos"
+            + "\n◊ Genero: " + music.getGenero()
+        );
+
+        Object[] options = {"Reproduzir nova Música", "Encerrar"};
+        int option = JOptionPane.showOptionDialog(
+            null, 
+            info, 
+            "Spotimy", 
+            JOptionPane.DEFAULT_OPTION, 
+            JOptionPane.PLAIN_MESSAGE, 
+            null, 
+            options, 
+            info
+        );
+
+        System.out.println(option);
+
+        if(option == 0) {
+            PlaylistSelector.showPlaylists();
+        } else {
+            return;
+        }
     }
 }

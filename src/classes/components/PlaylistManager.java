@@ -8,11 +8,13 @@ import src.classes.objects.PlayList;
 import src.classes.objects.Musica;
 
 public class PlaylistManager {
-    private PlayList playlist;
     
-    public PlaylistManager(String playlistName) {
-        
-        this.playlist = new PlayList(playlistName);
+    public PlaylistManager() {}
+
+    public static Musica showAndSelectMusic(String playlistName) {
+        PlayList playlist;
+
+        playlist = new PlayList(playlistName);
         String pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
         String pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
 
@@ -48,9 +50,6 @@ public class PlaylistManager {
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
         }
-    }
-
-    public Musica showAndSelectMusic() {
 
         StringBuilder colabList = new StringBuilder("PLAYLIST POR:\n");
         ArrayList<String> valuesList = new ArrayList<>();
@@ -87,7 +86,7 @@ public class PlaylistManager {
         for(int i = 0; i<playlist.getMusicas().size(); i++) {
             Musica musica = playlist.getMusicas().get(i);
             if(musica.getNome().equals(selectedValues[0]) && musica.getArtista().equals(selectedValues[1])) {
-                return musica;
+                MusicPlayer.play(musica);
             } 
         }
 

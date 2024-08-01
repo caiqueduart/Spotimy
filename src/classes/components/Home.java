@@ -3,12 +3,13 @@ import javax.swing.JOptionPane;
 
 public class Home {
 
-    Object[] values = {"Playlists", "Podcasts", "Áudio Books"};
-    Object value;
-
     public Home() {}
 
-    public void showHome() {
+    public static String showHome() {
+
+        Object[] values = {"Playlists", "Podcasts", "Áudio Books"};
+        Object value;
+
         value = JOptionPane.showInputDialog(
             null,
             "O que vamos ouvir hoje?", 
@@ -18,9 +19,7 @@ public class Home {
             values,
             values[0]
         );
-    }
-
-    public String getValue() {
+        
         return value.toString();
     }
 }

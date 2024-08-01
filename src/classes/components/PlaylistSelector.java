@@ -6,19 +6,21 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class PlaylistSelector {
-    public ArrayList<String> values = new ArrayList<>();
-    Object value;
-    
-    public PlaylistSelector() {
-        try {
+   
+    public PlaylistSelector() {}
 
+    public static void showPlaylists() {
+        ArrayList<String> options = new ArrayList<>();
+        Object option;
+
+        try {
             String path = "Spotimy/src/files/playlists/playlists.txt";
             FileReader fr = new FileReader(path);
             BufferedReader bf = new BufferedReader(fr);
 
             String line;
             while((line = bf.readLine())!= null) {
-                values.add(line);
+                options.add(line);
             }
 
             fr.close();
@@ -27,24 +29,17 @@ public class PlaylistSelector {
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
         }
-    }
-
-    public String showPlaylists() {
-
-        value = JOptionPane.showInputDialog(
+        
+        option = JOptionPane.showInputDialog(
             null,
-            "O que vamos ouvir hoje?", 
+            "Qual playlist deseja ouvir?", 
             "Spotimy",
             JOptionPane.INFORMATION_MESSAGE, 
             null,
-            values.toArray(),
-            values.get(0)
+            options.toArray(),
+            options.get(0)
         );
 
-        return (String)value;
-    }
-
-    public String getValue() {
-        return value.toString();
+        PlaylistManager.showAndSelectMusic((String)option);
     }
 }
