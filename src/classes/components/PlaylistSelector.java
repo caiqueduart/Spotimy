@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class PlaylistSelector {
     public ArrayList<String> values = new ArrayList<>();
     Object value;
-    String path = "Spotimy/src/files/playlists.txt";
+    String path = "Spotimy/src/files/playlists/playlists.txt";
     FileReader fr;
     BufferedReader bf;
 
