@@ -3,17 +3,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
-public class Playlists {
+public class PlaylistSelector {
     public ArrayList<String> values = new ArrayList<>();
     Object value;
     String path = "Spotimy/src/files/playlists.txt";
     FileReader fr;
     BufferedReader bf;
 
-    public Playlists() {
+    public PlaylistSelector() {
         try {
             fr = new FileReader(path);
             bf = new BufferedReader(fr);

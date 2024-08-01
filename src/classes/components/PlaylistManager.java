@@ -1,4 +1,4 @@
-package src.classes.components.playlists;
+package src.classes.components;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,32 +7,40 @@ import javax.swing.JOptionPane;
 import src.classes.objects.PlayList;
 import src.classes.objects.Musica;
 
-public class Animadas {
-    private ArrayList<String> colaboradores = new ArrayList<>();
-    public PlayList animadas = new PlayList("Animadas", colaboradores);
-    private String pathColaboradores = "Spotimy/src/files/playlists/animadas/colaboradores.txt";
-    private String pathMusicas = "Spotimy/src/files/playlists/animadas/musicas.txt";
+public class PlaylistManager {
+    private String playlistName;
+    public PlayList playlist = new PlayList(playlistName);
+    private String pathColaboradores;
+    private String pathMusicas;
     private FileReader fr;
     private BufferedReader br;
+    
+    public PlaylistManager(String playlistName) {
+        
+        this.playlistName = playlistName;
 
-    public Animadas() {
+        pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
+        pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
+
         try {
+
             fr = new FileReader(pathColaboradores);
             br = new BufferedReader(fr);
 
             String line;
 
             while ((line = br.readLine()) != null) {
-                colaboradores.add(line);
+                playlist.addColaborador(line);
             }
 
             fr = new FileReader(pathMusicas);
             br = new BufferedReader(fr);
 
             while ((line = br.readLine()) != null) {
+
                 String[] musica = line.split("#");
 
-                animadas.addMusica(new Musica(
+                playlist.addMusica(new Musica(
                     musica[0],
                     Double.parseDouble(musica[1]),
                     musica[2],
@@ -46,20 +54,22 @@ public class Animadas {
     }
 
     public void showMusics() {
+
         StringBuilder colaboradoresList = new StringBuilder("COLABORADORES\n");
-        StringBuilder musicasList = new StringBuilder("MÚSICAS\n");
         ArrayList<String> valuesList = new ArrayList<>();
 
-        for (int i = 0; i < colaboradores.size(); i++) {
-            colaboradoresList.append(colaboradores.get(i));
-            if (i < (colaboradores.size() - 1)) {
+        for (int i = 0; i < playlist.getNomeColaboradores().size(); i++) {
+
+            colaboradoresList.append(playlist.getNomeColaboradores().get(i));
+
+            if (i < (playlist.getNomeColaboradores().size() - 1)) {
                 colaboradoresList.append(" | ");
             }
         }
 
-        for (int i = 0; i < animadas.getMusicas().size(); i++) {
-            Musica musica = animadas.getMusicas().get(i);
-            musicasList.append(musica.getNome() + " - " + musica.getArtista() + "\n");
+        for (int i = 0; i < playlist.getMusicas().size(); i++) {
+
+            Musica musica = playlist.getMusicas().get(i);
             valuesList.add(musica.getNome() + " - " + musica.getArtista());
         }
 

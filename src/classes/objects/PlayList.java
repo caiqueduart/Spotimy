@@ -6,9 +6,8 @@ public class PlayList extends Biblioteca {
     private ArrayList<String> nomeColaboradores = new ArrayList<>();
     private ArrayList<Musica> musicas = new ArrayList<>();
 
-    public PlayList(String nome, ArrayList<String> nomeColaboradores) {
+    public PlayList(String nome) {
         super(nome);
-        this.nomeColaboradores = nomeColaboradores;
     }
 
     public ArrayList<String> getNomeColaboradores() {

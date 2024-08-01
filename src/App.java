@@ -1,18 +1,19 @@
 package src;
 import javax.swing.JOptionPane;
+
+import src.classes.components.PlaylistManager;
 import src.classes.components.Home;
-import src.classes.components.Playlists;
-import src.classes.components.playlists.Animadas;
+import src.classes.components.PlaylistSelector;
 
 public class App {
     public static void main(String[] args) {
         Home home = new Home();
-        Playlists playlists = new Playlists();
 
+        PlaylistSelector playlists = new PlaylistSelector();
         home.showHome();
 
         if(home.getValue().equals("Playlists")) {
-            Animadas playlist = new Animadas();
+            PlaylistManager playlist = new PlaylistManager("romanticas");
             playlists.showPlaylists();
             playlist.showMusics();
 
