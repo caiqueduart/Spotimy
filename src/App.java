@@ -1,4 +1,5 @@
 package src;
+
 import javax.swing.JOptionPane;
 import src.classes.components.Home;
 import src.classes.components.PlaylistSelector;
@@ -9,17 +10,11 @@ public class App {
         String option = Home.showHome();
 
         if(option.equals("Playlists")) {
-
             PlaylistSelector.showPlaylists();
-
-        } else if(option.equals("Podcasts")) {
-
-
-
-        } else if(option.equals("Audiobooks")) {
-
-
-
+        }
+        
+        if(option.equals("Podcasts")) {
+            
         }
     }
 }

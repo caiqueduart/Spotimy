@@ -27,8 +27,6 @@ public class MusicPlayer {
             info
         );
 
-        System.out.println(option);
-
         if(option == 0) {
             PlaylistSelector.showPlaylists();
         } else {
