@@ -1,4 +1,5 @@
 package src.classes.components;
+
 import javax.swing.JOptionPane;
 
 public class Home {
@@ -14,7 +15,7 @@ public class Home {
             null,
             "O que vamos ouvir hoje?", 
             "Spotimy",
-            JOptionPane.INFORMATION_MESSAGE, 
+            JOptionPane.PLAIN_MESSAGE, 
             null,
             values,
             values[0]

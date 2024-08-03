@@ -14,12 +14,12 @@ public class PlaylistManager {
     
     public PlaylistManager() {}
 
-    public static Musica showAndSelectMusic(String playlistName) {
+    public static Musica showAndSelectMusic(String podcastName) {
         PlayList playlist;
 
-        playlist = new PlayList(playlistName);
-        String pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
-        String pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
+        playlist = new PlayList(podcastName);
+        String pathColaboradores = "Spotimy/src/files/playlists/" + podcastName + "/colaboradores.txt";
+        String pathMusicas = "Spotimy/src/files/playlists/" + podcastName + "/musicas.txt";
 
         try {
 
@@ -75,7 +75,7 @@ public class PlaylistManager {
             null,
             colabList + "\n\nQUAL MÚSICA GOSTARIA DE OUVIR?", 
             "Spotimy > " + playlist.getNome(),
-            JOptionPane.INFORMATION_MESSAGE, 
+            JOptionPane.PLAIN_MESSAGE, 
             null,
             values,
             values[0]
@@ -83,7 +83,7 @@ public class PlaylistManager {
 
         if (selectedValue != null) {
             if (selectedValue.equals("[ ADICIONAR NOVA MÚSICA ]")) {
-                addMusic(playlistName);
+                addMusic(podcastName);
             } else {
                 String[] selectedValues = selectedValue.split(" - ");
                 for (Musica musica : playlist.getMusicas()) {
@@ -98,8 +98,8 @@ public class PlaylistManager {
         return null;
     }
 
-    public static void addMusic(String playlistName) {
-        String path = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
+    public static void addMusic(String podcastName) {
+        String path = "Spotimy/src/files/playlists/" + podcastName + "/musicas.txt";
         String nome = JOptionPane.showInputDialog("Qual o nome da música?");
 
         if (nome == null || nome.isEmpty()) {
@@ -120,10 +120,10 @@ public class PlaylistManager {
             Object[] options = {"Reproduzir nova Música", "Adicionar nova música", "Encerrar"};
             int option = JOptionPane.showOptionDialog(
                 null, 
-                musica.getNome() + " de " + musica.getArtista() + " foi adcionada a " + playlistName + "\nO que faremos agora?", 
+                musica.getNome() + " de " + musica.getArtista() + " foi adcionada a " + podcastName + "\nO que faremos agora?", 
                 "Spotimy", 
                 JOptionPane.DEFAULT_OPTION, 
-                JOptionPane.INFORMATION_MESSAGE, 
+                JOptionPane.PLAIN_MESSAGE, 
                 null, 
                 options, 
                 options[0]
@@ -132,7 +132,7 @@ public class PlaylistManager {
             if (option == 0) {
                 PlaylistSelector.showPlaylists();
             } else if (option == 1) {
-                PlaylistManager.addMusic(playlistName);
+                PlaylistManager.addMusic(podcastName);
             } else {
                 return;
             }

@@ -1,4 +1,5 @@
 package src.classes.components;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class PlaylistSelector {
             null,
             "Qual playlist deseja ouvir?", 
             "Spotimy",
-            JOptionPane.INFORMATION_MESSAGE, 
+            JOptionPane.PLAIN_MESSAGE, 
             null,
             options.toArray(),
             options.get(0)
