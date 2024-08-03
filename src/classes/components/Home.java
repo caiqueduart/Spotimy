@@ -8,7 +8,7 @@ public class Home {
 
     public static String showHome() {
 
-        Object[] values = {"Playlists", "Podcasts", "Áudio Books"};
+        Object[] values = {"Playlists", "Podcasts"};
         Object value;
 
         value = JOptionPane.showInputDialog(

@@ -29,7 +29,7 @@ public class MusicPlayer {
         );
 
         if(option == 0) {
-            PlaylistSelector.showPlaylists();
+            LibrarySelector.show("playlists");
         } else {
             return;
         }

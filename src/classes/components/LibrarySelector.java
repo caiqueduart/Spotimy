@@ -6,16 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class PlaylistSelector {
+public class LibrarySelector {
    
-    public PlaylistSelector() {}
+    public LibrarySelector() {}
 
-    public static void showPlaylists() {
+    public static void show(String libraryType) {
         ArrayList<String> options = new ArrayList<>();
         Object option;
 
         try {
-            String path = "Spotimy/src/files/playlists/playlists.txt";
+            String path = "Spotimy/src/files/"+ libraryType +"/" + libraryType + ".txt";
             FileReader fr = new FileReader(path);
             BufferedReader bf = new BufferedReader(fr);
 
@@ -30,10 +30,17 @@ public class PlaylistSelector {
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
         }
-        
+
+        String formatedLibraryName;
+        if(libraryType.equals("playlists")) {
+            formatedLibraryName = "Playlist";
+        } else {
+            formatedLibraryName = "Podcast";
+        }
+
         option = JOptionPane.showInputDialog(
             null,
-            "Qual playlist deseja ouvir?", 
+            "Qual " + formatedLibraryName + " deseja ouvir?", 
             "Spotimy",
             JOptionPane.PLAIN_MESSAGE, 
             null,
@@ -41,6 +48,11 @@ public class PlaylistSelector {
             options.get(0)
         );
 
-        PlaylistManager.showAndSelectMusic((String)option);
+        if(libraryType.equals("playlists")) {
+            PlaylistManager.showAndSelectMusic((String)option);
+
+        } else if(libraryType.equals("podcasts")) {
+
+        }
     }
 }

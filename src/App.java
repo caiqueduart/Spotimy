@@ -2,7 +2,8 @@ package src;
 
 import javax.swing.JOptionPane;
 import src.classes.components.Home;
-import src.classes.components.PlaylistSelector;
+import src.classes.components.LibrarySelector;
+import src.classes.components.LibrarySelector;
 
 public class App {
     public static void main(String[] args) {
@@ -10,11 +11,11 @@ public class App {
         String option = Home.showHome();
 
         if(option.equals("Playlists")) {
-            PlaylistSelector.showPlaylists();
+            LibrarySelector.show("playlists");
         }
         
         if(option.equals("Podcasts")) {
-            
+            LibrarySelector.show("podcasts");
         }
     }
 }

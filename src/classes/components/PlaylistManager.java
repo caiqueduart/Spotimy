@@ -130,7 +130,7 @@ public class PlaylistManager {
             );
 
             if (option == 0) {
-                PlaylistSelector.showPlaylists();
+                LibrarySelector.show("playlists");
             } else if (option == 1) {
                 PlaylistManager.addMusic(podcastName);
             } else {
