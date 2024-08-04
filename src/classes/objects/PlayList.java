@@ -1,6 +1,6 @@
 package src.classes.objects;
+
 import java.util.ArrayList;
-import classes.Biblioteca;
 
 public class PlayList extends Biblioteca {
     private ArrayList<String> nomeColaboradores = new ArrayList<>();

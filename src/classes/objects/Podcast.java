@@ -1,7 +1,6 @@
 package src.classes.objects;
-import java.util.ArrayList;
 
-import classes.Biblioteca;
+import java.util.ArrayList;
 
 public class Podcast extends Biblioteca {
     private ArrayList<String> nomeApresentadores = new ArrayList<>();
@@ -25,13 +24,5 @@ public class Podcast extends Biblioteca {
 
     public void addEpisodio(Episodio ep) {
         episodios.add(ep);
-    }
-
-    public void removerEpisodio(Episodio ep) {
-        episodios.remove(ep);
-    }
-
-    public void removerApresentador(String nome) {
-        nomeApresentadores.remove(nome);
     }
 }
