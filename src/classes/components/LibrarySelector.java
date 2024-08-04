@@ -5,22 +5,23 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import src.classes.exceptions.InvalidOptionException;
 
 public class LibrarySelector {
    
     public LibrarySelector() {}
 
-    public static void show(String libraryType) {
+    public static void show(String libraryType) throws InvalidOptionException {
         ArrayList<String> options = new ArrayList<>();
         Object option;
 
         try {
-            String path = "Spotimy/src/files/"+ libraryType +"/" + libraryType + ".txt";
+            String path = "Spotimy/src/files/" + libraryType + "/" + libraryType + ".txt";
             FileReader fr = new FileReader(path);
             BufferedReader bf = new BufferedReader(fr);
 
             String line;
-            while((line = bf.readLine())!= null) {
+            while((line = bf.readLine()) != null) {
                 options.add(line);
             }
 
@@ -28,7 +29,13 @@ public class LibrarySelector {
             bf.close();
             
         } catch (IOException e) {
-            System.out.println("Erro: " + e.getMessage());
+            JOptionPane.showMessageDialog(
+                null,
+                "Aplicação encerrada!\n" + e.getMessage(),
+                "Spotimy",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
         }
 
         String formatedLibraryName;
@@ -47,6 +54,10 @@ public class LibrarySelector {
             options.toArray(),
             options.get(0)
         );
+
+        if(option == null) {
+            throw new InvalidOptionException("Aplicação Encerrada!\nO usuário clicou em Cancelar ou fechou a caixa de diálogo.");
+        }
 
         if(libraryType.equals("playlists")) {
             PlaylistManager.showAndSelectMusic((String)option);

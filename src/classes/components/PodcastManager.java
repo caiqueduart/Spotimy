@@ -7,6 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+
+import src.classes.exceptions.InvalidOptionException;
 import src.classes.objects.Episodio;
 import src.classes.objects.Podcast;
 
@@ -14,7 +16,7 @@ public class PodcastManager {
 
     public PodcastManager() {}
 
-    public static void showAndSelectPodcast(String podcastName) {
+    public static void showAndSelectPodcast(String podcastName) throws InvalidOptionException {
         Podcast podcast = new Podcast(podcastName);
         String pathEpisodios = "Spotimy/src/files/podcasts/" + podcastName + "/episodios.txt";
         String pathApresentadores = "Spotimy/src/files/podcasts/" + podcastName + "/apresentadores.txt";
@@ -67,7 +69,10 @@ public class PodcastManager {
             values[0]
         );
 
-        if(selectedValue != null) {
+        if(selectedValue == null) {
+            throw new InvalidOptionException("Aplicação Encerrada!\nO usuário clicou em Cancelar ou fechou a caixa de diálogo.");
+            
+        } else {
             if(selectedValue.equals("ADICIONAR NOVO EPISÓDIO")) {
                 addEpisodio(podcastName);
             } else {
@@ -114,7 +119,18 @@ public class PodcastManager {
             );
 
             if (option == 0) {
-                LibrarySelector.show("podcasts");
+                try {
+                    LibrarySelector.show("podcasts");
+
+                } catch(InvalidOptionException e) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Aplicação encerrada!\n" + e.getMessage(),
+                        "Spotimy",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                }
+                
             } else if (option == 1) {
                 PodcastManager.addEpisodio(podcastName);
             } else {

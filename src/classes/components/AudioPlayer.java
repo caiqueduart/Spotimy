@@ -1,6 +1,7 @@
 package src.classes.components;
 
 import javax.swing.JOptionPane;
+import src.classes.exceptions.InvalidOptionException;
 import src.classes.objects.Episodio;
 import src.classes.objects.Musica;
 
@@ -30,7 +31,18 @@ public class AudioPlayer {
         );
 
         if(option == 0) {
-            LibrarySelector.show("playlists");
+            try{
+                LibrarySelector.show("playlists");
+
+            } catch (InvalidOptionException e) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Aplicação encerrada!\n" + e.getMessage(),
+                    "Spotimy",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+
         } else {
             return;
         }
@@ -57,7 +69,18 @@ public class AudioPlayer {
         );
 
         if(option == 0) {
-            LibrarySelector.show("podcasts");
+            try {
+                LibrarySelector.show("podcasts");
+                
+            } catch(InvalidOptionException e) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Aplicação encerrada!\n" + e.getMessage(),
+                    "Spotimy",
+                    JOptionPane.ERROR_MESSAGE
+                );
+            }
+
         } else {
             return;
         }

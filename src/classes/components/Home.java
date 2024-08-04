@@ -1,12 +1,13 @@
 package src.classes.components;
 
 import javax.swing.JOptionPane;
+import src.classes.exceptions.InvalidOptionException;
 
 public class Home {
 
     public Home() {}
 
-    public static String showHome() {
+    public static String showHome() throws InvalidOptionException {
 
         Object[] values = {"Playlists", "Podcasts"};
         Object value;
@@ -20,6 +21,10 @@ public class Home {
             values,
             values[0]
         );
+
+        if(value == null) {
+            throw new InvalidOptionException("A aplicação foi encerrada!\nO usuário clicou em Cancelar ou fechou a caixa de diálogo.");
+        }
         
         return value.toString();
     }

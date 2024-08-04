@@ -8,13 +8,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import src.classes.objects.PlayList;
+import src.classes.exceptions.InvalidOptionException;
 import src.classes.objects.Musica;
 
 public class PlaylistManager {
     
     public PlaylistManager() {}
 
-    public static void showAndSelectMusic(String playlistName) {
+    public static void showAndSelectMusic(String playlistName) throws InvalidOptionException {
         PlayList playlist = new PlayList(playlistName);
         String pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
         String pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
@@ -79,7 +80,10 @@ public class PlaylistManager {
             values[0]
         );
 
-        if (selectedValue != null) {
+        if(selectedValue == null) {
+            throw new InvalidOptionException("Aplicação Encerrada!\nO usuário clicou em Cancelar ou fechou a caixa de diálogo.");
+
+        } else {
             if(selectedValue.equals("ADICIONAR NOVA MÚSICA")) {
                 addMusic(playlistName);
             } else {
@@ -126,7 +130,18 @@ public class PlaylistManager {
             );
 
             if (option == 0) {
-                LibrarySelector.show("playlists");
+                try {
+                    LibrarySelector.show("podcasts");
+
+                } catch(InvalidOptionException e) {
+                    JOptionPane.showMessageDialog(
+                        null,
+                        "Aplicação encerrada!\n" + e.getMessage(),
+                        "Spotimy",
+                        JOptionPane.ERROR_MESSAGE
+                    );
+                }
+                
             } else if (option == 1) {
                 PlaylistManager.addMusic(playlistName);
             } else {
