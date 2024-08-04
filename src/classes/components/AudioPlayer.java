@@ -5,17 +5,28 @@ import src.classes.exceptions.InvalidOptionException;
 import src.classes.objects.Episodio;
 import src.classes.objects.Musica;
 
+/**
+ * Classe responsável pela reprodução de músicas e episódios.
+ */
 public class AudioPlayer {
 
+    /**
+     * Construtor da classe AudioPlayer.
+     */
     AudioPlayer() {}
 
+    /**
+     * Reproduz a música fornecida e exibe opções para o usuário.
+     *
+     * @param music A música a ser reproduzida.
+     */
     public static void playMusic(Musica music) {
 
         String info = (
             music.getNome() + " está tocando agora. . ."
             + "\n◊ Artista: " + music.getArtista()
-            + "\n◊ Duracao: " + music.getDuracaoSegundos() + " segundos"
-            + "\n◊ Genero: " + music.getGenero()
+            + "\n◊ Duração: " + music.getDuracaoSegundos() + " segundos"
+            + "\n◊ Gênero: " + music.getGenero()
         );
 
         Object[] options = {"Reproduzir nova Música", "Encerrar"};
@@ -48,6 +59,11 @@ public class AudioPlayer {
         }
     }
 
+    /**
+     * Reproduz o episódio fornecido e exibe opções para o usuário.
+     *
+     * @param episodio O episódio a ser reproduzido.
+     */
     public static void playEpisodio(Episodio episodio) {
         String info = (
             episodio.getNome() + " está sendo reproduzido agora. . ."

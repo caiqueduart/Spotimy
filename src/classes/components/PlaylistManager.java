@@ -11,10 +11,22 @@ import src.classes.objects.PlayList;
 import src.classes.exceptions.InvalidOptionException;
 import src.classes.objects.Musica;
 
+/**
+ * Classe responsável pelo gerenciamento de playlists, incluindo a exibição de músicas e adição de novas músicas.
+ */
 public class PlaylistManager {
     
+    /**
+     * Construtor da classe PlaylistManager.
+     */
     public PlaylistManager() {}
 
+    /**
+     * Exibe uma playlist e permite que o usuário selecione uma música ou adicione uma nova música.
+     *
+     * @param playlistName O nome da playlist a ser exibida.
+     * @throws InvalidOptionException Se o usuário clicar em Cancelar ou fechar a caixa de diálogo.
+     */
     public static void showAndSelectMusic(String playlistName) throws InvalidOptionException {
         PlayList playlist = new PlayList(playlistName);
         String pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
@@ -22,18 +34,17 @@ public class PlaylistManager {
 
         try {
 
+            // Lê os colaboradores da playlist.
             FileReader fr = new FileReader(pathColaboradores);
             BufferedReader br = new BufferedReader(fr);
-
             String line;
-
             while ((line = br.readLine()) != null) {
                 playlist.addColaborador(line);
             }
 
+            // Lê as músicas da playlist.
             fr = new FileReader(pathMusicas);
             br = new BufferedReader(fr);
-
             while ((line = br.readLine()) != null) {
                 String[] musica = line.split("#");
                 playlist.addMusica(new Musica(
@@ -48,9 +59,11 @@ public class PlaylistManager {
             fr.close();
 
         } catch (IOException e) {
+            // Exibe uma mensagem de erro se ocorrer um problema ao ler os arquivos.
             System.out.println("Erro: " + e.getMessage());
         }
 
+        // Cria uma lista formatada de colaboradores e músicas para exibição.
         StringBuilder colabList = new StringBuilder("PLAYLIST POR:\n");
         ArrayList<String> valuesList = new ArrayList<>();
 
@@ -70,6 +83,7 @@ public class PlaylistManager {
 
         String[] values = valuesList.toArray(new String[0]);
 
+        // Exibe uma caixa de diálogo para seleção de música.
         String selectedValue = (String) JOptionPane.showInputDialog(
             null,
             colabList + "\n\nQUAL MÚSICA GOSTARIA DE OUVIR?", 
@@ -81,12 +95,14 @@ public class PlaylistManager {
         );
 
         if(selectedValue == null) {
+            // Lança uma exceção se o usuário clicar em Cancelar ou fechar a caixa de diálogo.
             throw new InvalidOptionException("Aplicação Encerrada!\nO usuário clicou em Cancelar ou fechou a caixa de diálogo.");
 
         } else {
             if(selectedValue.equals("ADICIONAR NOVA MÚSICA")) {
                 addMusic(playlistName);
             } else {
+                // Reproduz a música selecionada.
                 String[] selectedValues = selectedValue.split(" - ");
                 for (Musica musica : playlist.getMusicas()) {
                     if (musica.getNome().equals(selectedValues[0]) && musica.getArtista().equals(selectedValues[1])) {
@@ -98,6 +114,11 @@ public class PlaylistManager {
         }
     }
 
+    /**
+     * Adiciona uma nova música à playlist.
+     *
+     * @param playlistName O nome da playlist onde a música será adicionada.
+     */
     public static void addMusic(String playlistName) {
         String path = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
         String nome = JOptionPane.showInputDialog("Qual o nome da música?");
@@ -106,7 +127,7 @@ public class PlaylistManager {
             return;
         }
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             Musica musica = new Musica(
                 nome,
                 Double.parseDouble(JOptionPane.showInputDialog("Qual a duração de " + nome + " em segundos?")),
@@ -114,9 +135,10 @@ public class PlaylistManager {
                 JOptionPane.showInputDialog("Qual o gênero de " + nome + "?")
             );
 
+            // Adiciona a nova música ao arquivo da playlist.
             bw.write("\n" + musica.getNome() + "#" + musica.getDuracaoSegundos() + "#" + musica.getArtista() + "#" + musica.getGenero());
-            bw.close();
 
+            // Oferece opções ao usuário após adicionar a música.
             Object[] options = {"Reproduzir nova Música", "Adicionar nova música", "Encerrar"};
             int option = JOptionPane.showOptionDialog(
                 null, 
@@ -133,7 +155,7 @@ public class PlaylistManager {
                 try {
                     LibrarySelector.show("podcasts");
 
-                } catch(InvalidOptionException e) {
+                } catch (InvalidOptionException e) {
                     JOptionPane.showMessageDialog(
                         null,
                         "Aplicação encerrada!\n" + e.getMessage(),
@@ -143,12 +165,14 @@ public class PlaylistManager {
                 }
                 
             } else if (option == 1) {
+                // Permite adicionar mais músicas.
                 PlaylistManager.addMusic(playlistName);
             } else {
                 return;
             }
             
         } catch (IOException e) {
+            // Exibe uma mensagem de erro se ocorrer um problema ao escrever no arquivo.
             System.out.println("Erro: " + e.getMessage());
         }
     }

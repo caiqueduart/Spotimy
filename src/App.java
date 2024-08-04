@@ -5,12 +5,25 @@ import src.classes.components.Home;
 import src.classes.components.LibrarySelector;
 import src.classes.exceptions.InvalidOptionException;
 
+/**
+ * Classe principal da aplicação que gerencia a navegação entre as opções disponíveis.
+ * 
+ * @author Caique Duarte
+ */
 public class App {
+
+    /**
+     * Método principal que inicializa o aplicativo.
+     *
+     * @param args Argumentos da linha de comando (não utilizados).
+     */
     public static void main(String[] args) {
 
-        try{
+        try {
+            // Exibe a tela inicial e obtém a opção selecionada pelo usuário.
             String option = Home.showHome();
     
+            // Processa a opção selecionada pelo usuário.
             switch (option) {
     
                 case "Playlists": {
@@ -29,7 +42,8 @@ public class App {
                 } 
             }
 
-        } catch(InvalidOptionException e) {
+        } catch (InvalidOptionException e) {
+            // Exibe uma mensagem de erro caso uma exceção InvalidOptionException ocorra.
             JOptionPane.showMessageDialog(
                 null, e.getMessage(), 
                 "Spotimy", 
