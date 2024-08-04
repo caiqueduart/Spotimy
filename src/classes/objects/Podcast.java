@@ -7,9 +7,8 @@ public class Podcast extends Biblioteca {
     private ArrayList<String> nomeApresentadores = new ArrayList<>();
     private ArrayList<Episodio> episodios = new ArrayList<>();
 
-    Podcast(String nome, ArrayList<String> nomeApresentadores) {
+    public Podcast(String nome) {
         super(nome);
-        this.nomeApresentadores = new ArrayList<>(nomeApresentadores);
     }
 
     public ArrayList<Episodio> getEpisodios() {

@@ -14,12 +14,10 @@ public class PlaylistManager {
     
     public PlaylistManager() {}
 
-    public static Musica showAndSelectMusic(String podcastName) {
-        PlayList playlist;
-
-        playlist = new PlayList(podcastName);
-        String pathColaboradores = "Spotimy/src/files/playlists/" + podcastName + "/colaboradores.txt";
-        String pathMusicas = "Spotimy/src/files/playlists/" + podcastName + "/musicas.txt";
+    public static void showAndSelectMusic(String playlistName) {
+        PlayList playlist = new PlayList(playlistName);
+        String pathColaboradores = "Spotimy/src/files/playlists/" + playlistName + "/colaboradores.txt";
+        String pathMusicas = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
 
         try {
 
@@ -67,7 +65,7 @@ public class PlaylistManager {
             valuesList.add(musica.getNome() + " - " + musica.getArtista());
         }
 
-        valuesList.add("[ ADICIONAR NOVA MÚSICA ]");
+        valuesList.add("ADICIONAR NOVA MÚSICA");
 
         String[] values = valuesList.toArray(new String[0]);
 
@@ -82,31 +80,29 @@ public class PlaylistManager {
         );
 
         if (selectedValue != null) {
-            if (selectedValue.equals("[ ADICIONAR NOVA MÚSICA ]")) {
-                addMusic(podcastName);
+            if(selectedValue.equals("ADICIONAR NOVA MÚSICA")) {
+                addMusic(playlistName);
             } else {
                 String[] selectedValues = selectedValue.split(" - ");
                 for (Musica musica : playlist.getMusicas()) {
                     if (musica.getNome().equals(selectedValues[0]) && musica.getArtista().equals(selectedValues[1])) {
-                        MusicPlayer.play(musica);
-                        return musica;
+                        AudioPlayer.playMusic(musica);
+                        return;
                     }
                 }
             }
         }
-
-        return null;
     }
 
-    public static void addMusic(String podcastName) {
-        String path = "Spotimy/src/files/playlists/" + podcastName + "/musicas.txt";
+    public static void addMusic(String playlistName) {
+        String path = "Spotimy/src/files/playlists/" + playlistName + "/musicas.txt";
         String nome = JOptionPane.showInputDialog("Qual o nome da música?");
 
         if (nome == null || nome.isEmpty()) {
             return;
         }
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
             Musica musica = new Musica(
                 nome,
                 Double.parseDouble(JOptionPane.showInputDialog("Qual a duração de " + nome + " em segundos?")),
@@ -120,7 +116,7 @@ public class PlaylistManager {
             Object[] options = {"Reproduzir nova Música", "Adicionar nova música", "Encerrar"};
             int option = JOptionPane.showOptionDialog(
                 null, 
-                musica.getNome() + " de " + musica.getArtista() + " foi adcionada a " + podcastName + "\nO que faremos agora?", 
+                musica.getNome() + " de " + musica.getArtista() + " foi adcionada a " + playlistName + "\nO que faremos agora?", 
                 "Spotimy", 
                 JOptionPane.DEFAULT_OPTION, 
                 JOptionPane.PLAIN_MESSAGE, 
@@ -132,7 +128,7 @@ public class PlaylistManager {
             if (option == 0) {
                 LibrarySelector.show("playlists");
             } else if (option == 1) {
-                PlaylistManager.addMusic(podcastName);
+                PlaylistManager.addMusic(playlistName);
             } else {
                 return;
             }

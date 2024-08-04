@@ -52,7 +52,7 @@ public class LibrarySelector {
             PlaylistManager.showAndSelectMusic((String)option);
 
         } else if(libraryType.equals("podcasts")) {
-
+            PodcastManager.showAndSelectPodcast((String)option);
         }
     }
 }

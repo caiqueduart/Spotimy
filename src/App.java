@@ -1,8 +1,6 @@
 package src;
 
-import javax.swing.JOptionPane;
 import src.classes.components.Home;
-import src.classes.components.LibrarySelector;
 import src.classes.components.LibrarySelector;
 
 public class App {
@@ -10,12 +8,22 @@ public class App {
 
         String option = Home.showHome();
 
-        if(option.equals("Playlists")) {
-            LibrarySelector.show("playlists");
-        }
-        
-        if(option.equals("Podcasts")) {
-            LibrarySelector.show("podcasts");
+        switch (option) {
+
+            case "Playlists": {
+                LibrarySelector.show("playlists");
+                break;
+            }
+                
+            case "Podcasts": {
+                LibrarySelector.show("podcasts");
+                break;
+            }
+                
+            default: {
+                Home.showHome();
+                break;
+            } 
         }
     }
 }
