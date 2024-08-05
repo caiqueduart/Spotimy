@@ -1,2 +1,10 @@
-Nome#1#tema#convidado
-a#1.0#a#a
+O Futuro da IA#3600#Tecnologia#André Santos
+Importância da Saúde Mental#2700#Saúde#Dra. Ana Silva
+Histórias de Startups#3000#Negócios#Marcelo Lopes
+História de Roma#4200#História#Prof. Maria Oliveira
+Exploração Espacial#3600#Ciência#Carlos Nunes
+Desvendando Mitos do Fitness#3300#Fitness#João Almeida
+A Arte da Negociação#3200#Negócios#Fernanda Costa
+Mudanças Climáticas Hoje#3400#Meio Ambiente#Luísa Souza
+Psicologia da Felicidade#3000#Psicologia#Dr. Pedro Martins
+Futuro da Energia Renovável#3500#Energia#Rafael Pereira

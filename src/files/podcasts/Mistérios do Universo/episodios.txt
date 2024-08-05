@@ -1,6 +1,10 @@
-Nome#1#tema#convidado
-O Segredo das Estrela#7000.0#Estrelas#Dr. Will Barbosa
-1#1.0#1#1
-2#2.0#2#2
-2#2.0#2#2
-4#4.0#4#4
+A Origem do Universo#3600#Astronomia#Dr. Paulo Andrade
+Buracos Negros#3300#Física#Dra. Carla Santos
+A Matéria Escura#3000#Cosmologia#Dr. João Ribeiro
+Multiversos#3200#Astrofísica#Prof. Marcos Lima
+A Energia Escura#3400#Cosmologia#Dra. Helena Souza
+O Paradoxo de Fermi#3100#Astrobiologia#Dr. Ricardo Mendes
+Viagens no Tempo#3500#Física#Dr. Luís Almeida
+A Teoria das Cordas#3700#Física Teórica#Prof. Fernando Oliveira
+A Expansão do Universo#3400#Astronomia#Dr. Rafael Silva
+O Enigma da Vida Extraterrestre#3600#Astrobiologia#Dra. Patrícia Costa

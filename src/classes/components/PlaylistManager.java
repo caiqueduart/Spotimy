@@ -153,7 +153,7 @@ public class PlaylistManager {
 
             if (option == 0) {
                 try {
-                    LibrarySelector.show("podcasts");
+                    LibrarySelector.show("playlists");
 
                 } catch (InvalidOptionException e) {
                     JOptionPane.showMessageDialog(
